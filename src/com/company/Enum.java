@@ -1,5 +1,7 @@
 package com.company;
 
 public enum Enum {
-    small, medium, large
+    Small,
+    Medium,
+    Large
 }

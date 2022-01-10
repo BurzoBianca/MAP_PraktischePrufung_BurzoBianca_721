@@ -1,6 +1,5 @@
 package com.company;
 
-public class Enum {
-    public static Object valueOf(String attribute) {
-    }
+public enum Enum {
+    small, medium, large
 }

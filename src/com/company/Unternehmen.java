@@ -1,41 +1,66 @@
 package com.company;
 
-public class Unternehmen {
+import java.util.Objects;
 
-    private int id;
-    private String unternehmensname;
-    private Enum unternehmensgröße;
+public class Unternehmen {
+    private Long id;
+    private String name;
+    private Enum unternehmensgrosse;
     private int anzahlMitarbeiter;
-    private int einkommen_Kunde;
+    private int einkommenKunde;
     private String ort;
 
-    public Unternehmen(int id, String unternehmensname, Enum unternehmensgröße, int anzahlMitarbeiter, int einkommen_Kunde, String ort) {
+    public Unternehmen(Long id, String name, Enum unternehmensgrosse, int anzahlMitarbeiter, int einkommenKunde, String ort) {
         this.id = id;
-        this.unternehmensname = unternehmensname;
-        this.unternehmensgröße = unternehmensgröße;
+        this.name = name;
+        this.unternehmensgrosse = unternehmensgrosse;
         this.anzahlMitarbeiter = anzahlMitarbeiter;
-        this.einkommen_Kunde = einkommen_Kunde;
+        this.einkommenKunde = einkommenKunde;
         this.ort = ort;
     }
 
-    public void setId(int id) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void setUnternehmensname(String unternehmensname) {
-        this.unternehmensname = unternehmensname;
+    public String getName() {
+        return name;
     }
 
-    public void setUnternehmensgröße(Enum unternehmensgröße) {
-        this.unternehmensgröße = unternehmensgröße;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Enum getUnternehmensgrosse() {
+        return unternehmensgrosse;
+    }
+
+    public void setUnternehmensgrosse(Enum unternehmensgrosse) {
+        this.unternehmensgrosse = unternehmensgrosse;
+    }
+
+    public int getAnzahlMitarbeiter() {
+        return anzahlMitarbeiter;
     }
 
     public void setAnzahlMitarbeiter(int anzahlMitarbeiter) {
         this.anzahlMitarbeiter = anzahlMitarbeiter;
     }
 
-    public void setEinkommen_Kunde(int einkommen_Kunde) {
-        this.einkommen_Kunde = einkommen_Kunde;
+    public int getEinkommenKunde() {
+        return einkommenKunde;
+    }
+
+    public void setEinkommenKunde(int einkommenKunde) {
+        this.einkommenKunde = einkommenKunde;
+    }
+
+    public String getOrt() {
+        return ort;
     }
 
     public void setOrt(String ort) {
@@ -43,38 +68,22 @@ public class Unternehmen {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Unternehmen kunde = (Unternehmen) o;
+        return anzahlMitarbeiter == kunde.anzahlMitarbeiter && einkommenKunde == kunde.einkommenKunde && Objects.equals(id, kunde.id) && Objects.equals(name, kunde.name) && unternehmensgrosse == kunde.unternehmensgrosse && Objects.equals(ort, kunde.ort);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, unternehmensgrosse, anzahlMitarbeiter, einkommenKunde, ort);
+    }
+
+    @Override
     public String toString() {
-        return "Unternehmen{" +
-                "id='" + id + '\'' +
-                "name='" + unternehmensname + '\'' +
-                ", unternehmensgrosse='" + unternehmensgröße + '\'' +
-                "anzahl Mitarbeiter='" + anzahlMitarbeiter + '\'' +
-                "einkommen Kunden='" + einkommen_Kunde + '\'' +
-                ", ort='" + ort + '\'' +
-                '}';
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getUnternehmensname() {
-        return unternehmensname;
-    }
-
-    public Enum getUnternehmensgröße() {
-        return unternehmensgröße;
-    }
-
-    public int getAnzahlMitarbeiter() {
-        return anzahlMitarbeiter;
-    }
-
-    public int getEinkommen_Kunde() {
-        return einkommen_Kunde;
-    }
-
-    public String getOrt() {
-        return ort;
+        return "Kunde{" + "id=" + id + ", name='" + name + '\'' + ", unternehmensgrosse=" + unternehmensgrosse +
+                ", anzahlMitarbeiter=" + anzahlMitarbeiter + ", einkommenKunde=" + einkommenKunde +
+                ", ort='" + ort + '\'' + '}';
     }
 }
